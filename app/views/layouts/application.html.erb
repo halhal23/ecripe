@@ -11,6 +11,19 @@
   </head>
 
   <body>
+    <p>======= header =========</p>
+    <% if user_signed_in? %>
+      <p>ログイン中です</p>
+      <p><%= current_user.email %></p>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <p>ログインして無いです</p>
+      <%= link_to "ログイン", new_user_session_path %>
+      <%= link_to "サインアップ", new_user_registration_path %>
+    <% end %>
+    <p>======= header =========</p>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
